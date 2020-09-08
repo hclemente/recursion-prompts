@@ -24,16 +24,38 @@ var sum = function(array) {
     } else {
         return sum(array.slice(1)) + array[0];
     }
-
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
-var arraySum = function(array) {
-};
+var arraySum = function(array) {  
+    var merged = array.flat(2);
+    if (merged.length === 0) {
+        return 0;
+    } else {
+        return arraySum(merged.slice(1)) + merged[0];
+    }
+}
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+    //a = Math.abs(n);
+    if (n === 0) {
+        return true;
+    }
+    if (n > 0) {
+        if (n === 1) {
+            return false;
+        } else {
+            return isEven(n - 2);
+        }
+    } else {
+        if (n === -1) {
+            return false;
+        } else {
+            return isEven(n + 2);
+        }
+    }
 };
 
 // 5. Sum all integers below a given integer.
